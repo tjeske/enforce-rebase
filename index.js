@@ -3,11 +3,11 @@ const { exec } = require('child_process')
 
 const run = async () => {
   const failureMsg = 
-    "Pull requests must be rebased on master, and have no merge commits"
+    "Pull requests must be rebased on main, and have no merge commits"
 
   const shCmd = 
-  `[ -z "$(git log --oneline origin/master...HEAD --merges)" ] &&
-     [ "$(git merge-base origin/master HEAD)" = "$(git rev-parse origin/master)" ]`
+  `[ -z "$(git log --oneline origin/main...HEAD --merges)" ] &&
+     [ "$(git merge-base origin/main HEAD)" = "$(git rev-parse origin/main)" ]`
 
   try {
     const cmd = exec(shCmd, (error, stdout, stderr) => {
